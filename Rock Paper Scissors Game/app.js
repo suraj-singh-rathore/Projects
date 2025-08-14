@@ -19,11 +19,11 @@ const drawGame = () => {
  const showWinner = (userWin, userChoice, computerChoice) => {
     if (userWin) {
         console.log("You Win!");
-        msg.innerText = "You win!";
-        msg.style.backgroundColor = "#081b";
+        msg.innerText = `You win! Your ${userChoice} beats ${computerChoice}`;
+        msg.style.backgroundColor = "green";
     } else {
         console.log("You Lose");
-        msg.innerText = "You lose.";
+        msg.innerText = `You lost. ${computerChoice} beats Your ${userChoice}`;
         msg.style.backgroundColor = "red";
     }
  }
@@ -47,9 +47,9 @@ const playGame = (userChoice) =>{
             userWin = computerChoice === "scissors" ? false : true;
         } else {
             //paper, rock
-            computerChoice === "rock" ? false:true;
+            userWin = computerChoice === "rock" ? false : true;
         }
-        showWinner (userWin);
+        showWinner (userWin, userChoice, computerChoice);
     }
 };
 
