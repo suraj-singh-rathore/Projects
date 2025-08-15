@@ -4,6 +4,9 @@ let compScore = 0;
 const choices = document.querySelectorAll(".choice");
 const msg = document.querySelector("#msg");
 
+const userScorePara = document.querySelector("#user-score");
+const computerScorePara = document.querySelector("#computer-score");
+
 const genComputerChoice = () => {
     const options = ["rock", "paper", "scissors"];
    const randIdx = Math.floor(Math.random() * 3);
@@ -11,18 +14,19 @@ const genComputerChoice = () => {
 }
 
 const drawGame = () => {
-    console.log("game was draw.");
     msg.innerText = "Game Draw. Play again.";
     msg.style.backgroundColor = "#af70c8ff";
 }
 
  const showWinner = (userWin, userChoice, computerChoice) => {
     if (userWin) {
-        console.log("You Win!");
+        userScore++;
+        userScorePara.innerText = userScore;
         msg.innerText = `You win! Your ${userChoice} beats ${computerChoice}`;
         msg.style.backgroundColor = "green";
     } else {
-        console.log("You Lose");
+        computerScore++;
+        computerScorePara.innerText = computerScore;
         msg.innerText = `You lost. ${computerChoice} beats Your ${userChoice}`;
         msg.style.backgroundColor = "red";
     }
